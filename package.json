@@ -4,15 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "jest": "^21.2.1"
+    "jest": "^21.2.1",
+    "pre-commit": "^1.2.2"
   },
+  "pre-commit": "test",
   "jest": {
-    "collectCoverage": true,
-    "coverageFormats": ["json", "html"]
+    "collectCoverage": true
   }
 }
