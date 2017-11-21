@@ -23,8 +23,15 @@ describe('PrimeChecker', () => {
 
   describe('#getPrimes', () => {
     it('returns a specific number of primes starting from 2', () => {
-      const primeArray = primeChecker.getPrimes(3);
-      expect(primeArray).toEqual([2, 3, 5]);
+      expect(primeChecker.getPrimes(3)).toEqual([2, 3, 5]);
+    });
+    it('works with bigger numbers', () => {
+      const firstTenPrimes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29];
+      const primeArray = primeChecker.getPrimes(10);
+      expect(primeArray).toEqual(firstTenPrimes);
+    });
+    it('can return only 1', () => {
+      expect(primeChecker.getPrimes(1)).toEqual([2]);
     });
   });
 });
