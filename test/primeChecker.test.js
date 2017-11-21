@@ -10,12 +10,21 @@ describe('PrimeChecker', () => {
     expect(PrimeChecker).toBeDefined();
   });
 
-  describe('#checkPrime', () => {
+  describe('#checkIfPrime', () => {
     it('returns true if number is prime', () => {
-      expect(primeChecker.checkPrime(5)).toBe(true);
+      expect(primeChecker.checkIfPrime(5)).toBe(true);
     });
     it('returns false if number is not prime', () => {
-      expect(primeChecker.checkPrime(6)).toBe(false);
+      expect(primeChecker.checkIfPrime(6)).toBe(false);
+      expect(primeChecker.checkIfPrime(0)).toBe(false);
+      expect(primeChecker.checkIfPrime(1)).toBe(false);
+    });
+  });
+
+  describe('#getPrimes', () => {
+    it('returns a specific number of primes starting from 2', () => {
+      const primeArray = primeChecker.getPrimes(3);
+      expect(primeArray).toEqual([2, 3, 5]);
     });
   });
 });
