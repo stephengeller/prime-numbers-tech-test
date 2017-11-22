@@ -14,7 +14,7 @@ describe('UserInterface', () => {
 
   describe('#askForNumber', () => {
     it('asks you for a number', () => {
-      expect(userInterface.askNumber()).toEqual(
+      expect(userInterface.askNumber()).toContain(
         'Please input the number of primes you would like to see'
       );
     });

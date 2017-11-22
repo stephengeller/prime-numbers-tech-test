@@ -10,7 +10,7 @@ class UserInterface {
     this.tableFormatter = tableFormatter;
   }
   askNumber() {
-    return 'Please input the number of primes you would like to see';
+    return 'Please input the number of primes you would like to see: ';
   }
 
   printToConsole(value) {
