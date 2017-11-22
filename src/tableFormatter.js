@@ -1,4 +1,9 @@
+const RowGenerator = require('./rowGenerator');
+
 class TableFormatter {
+  constructor(rowGenerator = new RowGenerator()) {
+    this.rowGenerator = rowGenerator;
+  }
   renderTable(rows) {
     return rows
       .map(row => {
@@ -6,6 +11,11 @@ class TableFormatter {
         return this.formatRow(row);
       })
       .join('\n');
+  }
+
+  formatTable(array2D) {
+    const multiplicationTable = this.rowGenerator.generateRows(array2D);
+    return this.renderTable(multiplicationTable);
   }
 
   formatRow(row) {
