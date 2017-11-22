@@ -7,8 +7,7 @@ class TableFormatter {
   renderTable(rows) {
     return rows
       .map(row => {
-        row = this.checkForZeros(row);
-        return this.formatRow(row);
+        return this.formatRow(row, this.checkMaxWidth(rows));
       })
       .join('\n');
   }
@@ -18,16 +17,26 @@ class TableFormatter {
     return this.renderTable(multiplicationTable);
   }
 
-  formatRow(row) {
+  formatRow(row, maxWidth) {
     let formattedRow = '|';
     for (let i = 0; i < row.length; i++) {
+      const extraSpaces = this.addExtraSpaces(row[i], maxWidth);
+      formattedRow += extraSpaces;
       formattedRow += ` ${row[i]}|`;
     }
     return formattedRow;
   }
 
-  checkForZeros(array) {
-    return array.map(value => (value === 0 ? ' ' : value));
+  addExtraSpaces(number, maxWidth) {
+    const currentWidth = number.toString().length;
+    const widthDifference = maxWidth - currentWidth;
+    return new Array(widthDifference + 1).join(' ');
+  }
+
+  checkMaxWidth(array2D) {
+    const lastArray = array2D[array2D.length - 1];
+    const lastNumber = lastArray[lastArray.length - 1];
+    return lastNumber.toString().length;
   }
 }
 

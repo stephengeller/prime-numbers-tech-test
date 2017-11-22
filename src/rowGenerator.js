@@ -13,9 +13,14 @@ class RowGenerator {
           row.push(array[i - 1] * array[j - 1]);
         }
       }
+      row = this.checkForZeros(row);
       result.push(row);
     }
     return result;
+  }
+
+  checkForZeros(row) {
+    return row.map(value => (value === 0 ? ' ' : value));
   }
 
   isXAxis(i, j) {
