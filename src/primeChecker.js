@@ -1,22 +1,26 @@
 class PrimeChecker {
-  checkIfPrime(number) {
-    if (number === 0) return false;
-    for (let i = 2; i < number; i++) {
-      if (number % i === 0) return false;
+  checkIfPrime(n) {
+    const limit = Math.sqrt(n);
+    for (var i = 2; i <= limit; i++) {
+      if (n % i === 0) return false;
     }
-    return number !== 1;
+    return true;
   }
 
-  getPrimes(numberOfPrimes, primesArr = [], currentNumber = 2) {
+  getPrimes(numberOfPrimes) {
     if (numberOfPrimes < 1) throw new Error('number has to be more than 1');
-    if (this.checkIfPrime(currentNumber)) {
-      primesArr.push(currentNumber);
-    }
-    if (primesArr.length < numberOfPrimes) {
-      this.getPrimes(numberOfPrimes, primesArr, currentNumber + 1);
+    const primesArr = [];
+    let i = 2;
+    for (i; primesArr.length < numberOfPrimes; i++) {
+      if (this.checkIfPrime(i)) {
+        primesArr.push(i);
+      }
     }
     return primesArr;
   }
 }
+
+let pG = new PrimeChecker();
+pG.getPrimes(20000);
 
 module.exports = PrimeChecker;
