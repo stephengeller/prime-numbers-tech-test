@@ -33,6 +33,12 @@ describe('PrimeChecker', () => {
     it('can return only 1 prime', () => {
       expect(primeChecker.getPrimes(1)).toEqual([2]);
     });
+    it('can handle looking for 20000 primes', () => {
+      expect(() => {
+        primeChecker.getPrimes(20000);
+      }).not.toThrowError();
+      expect(primeChecker.getPrimes(20000).length).toEqual(20000);
+    });
     it('throws error if number < 1', () => {
       expect(() => {
         primeChecker.getPrimes(0);

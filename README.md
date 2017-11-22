@@ -44,7 +44,6 @@ Please input the number of primes you would like to see: -1
 please use a positive number more than 0!
 You can type "exit" to quit
 Please input the number of primes you would like to see: exit
-$
 ```
 
 ## How to test
@@ -56,16 +55,16 @@ see all of the beautiful (passing) tests.
 
 * Language: JavaScript (ES6)
 * Package Manager: npm
-* Testing: Jest
+* Testing: Jest, Pre-Commit (makes sure tests pass before committing to git)
 * Linting: ESLint
-* Coverage: Istanbul (via Jest)
+* Coverage: Jest
 
 ## Testing
 
 * All 23 tests passing
 * 100% test coverage\*
 
-###### \* I am unfortunately unsure how to test command-line input/output, so the readlineController.js file has low test coverage in the function involving it. Otherwise, all files have 100% test coverage.
+###### \* I don't know howto test command-line input yet, so the readlineController.js file has lower test coverage in the function involving it. Otherwise, all files have 100% test coverage.
 
 ## Classes
 
@@ -77,22 +76,25 @@ This class is responsible for two things:
 2. Getting a number of primes based on an argument
 
 The latter of the two was refactored in order to improve efficiency, as the
-original solution was unable to handle big numbers
+original solution was unable to handle bigger numbers. It is currently tested to
+find at least 20,000 prime numbers.
 
 ##### `RowGenerator`
 
 This class is in charge of returning a 2D array which represents the
-multiplication table. This is achieved by using two loops which contain logic to
+multiplication table. This is achieved by using two loops that contain logic to
 determine whether the element is on the X or Y axes (and should not be
-multiplied), or
+multiplied), and conducts multiplications on the cells within the table.
 
 ##### `TableFormatter`
 
 Using the RowGenerator, the TableFormatter was responsible for taking a 2D array
-and formatting it to appear presentable to users. Originally, the solution did
-not take into account cell spacing, meaning tables quickly lost structure when
-numbers increased. I found this quite unpleasant to use, and so set up functions
-to detect the largest cell in the table and adjust each other cell respectively.
+and formatting it to appear presentable to users.
+
+Originally, the solution did not take into account cell spacing, meaning tables
+quickly lost structure when numbers increased. I found this quite unpleasant to
+use, and so set up functions to detect the largest cell in the table and adjust
+each other cell respectively.
 
 ```JavaScript
 // Original solution
