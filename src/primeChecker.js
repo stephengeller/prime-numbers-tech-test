@@ -8,6 +8,7 @@ class PrimeChecker {
   }
 
   getPrimes(numberOfPrimes, primesArr = [], currentNumber = 2) {
+    if (numberOfPrimes < 1) throw new Error('number has to be more than 1');
     if (this.checkIfPrime(currentNumber)) {
       primesArr.push(currentNumber);
     }

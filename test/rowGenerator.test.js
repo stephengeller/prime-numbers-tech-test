@@ -10,15 +10,15 @@ describe('PrimeChecker', () => {
     expect(rowGenerator).toBeDefined();
   });
 
-  describe('#generateRow', () => {
+  describe('#generateRows', () => {
     it('creates an N+1 x N+1 grid', () => {
-      let grid = rowGenerator.generateRow([1, 2]);
-      expect(grid).toEqual('|  | 1| 2|\n' + '| 1| 1| 2|\n' + '| 2| 2| 4|\n');
+      let grid = rowGenerator.generateRows([1, 2]);
+      expect(grid).toEqual([[0, 1, 2], [1, 1, 2], [2, 2, 4]]);
     });
 
     it('works with random numbers', () => {
-      let grid = rowGenerator.generateRow([1, 4]);
-      expect(grid).toEqual('|  | 1| 4|\n' + '| 1| 1| 4|\n' + '| 4| 4| 16|\n');
+      let grid = rowGenerator.generateRows([1, 4]);
+      expect(grid).toEqual([[0, 1, 4], [1, 1, 4], [4, 4, 16]]);
     });
   });
 });

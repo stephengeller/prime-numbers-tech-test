@@ -30,8 +30,13 @@ describe('PrimeChecker', () => {
       const primeArray = primeChecker.getPrimes(10);
       expect(primeArray).toEqual(firstTenPrimes);
     });
-    it('can return only 1', () => {
+    it('can return only 1 prime', () => {
       expect(primeChecker.getPrimes(1)).toEqual([2]);
+    });
+    it('throws error if number < 1', () => {
+      expect(() => {
+        primeChecker.getPrimes(0);
+      }).toThrowError('number has to be more than 1');
     });
   });
 });
