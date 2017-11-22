@@ -6,17 +6,30 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
-const inputLoop = () => {
-  rl.question(userInterface.askNumber(), answer => {
-    if (!isNaN(parseInt(answer)) && answer > 0) {
-      userInterface.getPrimeTable(answer);
-      inputLoop();
-    } else {
-      console.log(answer + ' is not valid');
-      console.log('please use a positive number more than 0!');
-      inputLoop();
-    }
-  });
-};
+class ReadLineController {
+  checkIfValidNumber(answer) {
+    return !isNaN(parseInt(answer)) && answer > 0;
+  }
 
-inputLoop();
+  promptBadAnser(answer) {
+    console.log(`\n${answer} is not valid,`);
+    console.log('please use a positive number more than 0!');
+  }
+
+  beginLoop() {
+    const inputLoop = () => {
+      rl.question(userInterface.askNumber(), answer => {
+        if (this.checkIfValidNumber(answer)) {
+          userInterface.getPrimeTable(answer);
+          inputLoop();
+        } else {
+          this.promptBadAnser(answer);
+          inputLoop();
+        }
+      });
+    };
+    inputLoop();
+  }
+}
+
+module.exports = ReadLineController;
