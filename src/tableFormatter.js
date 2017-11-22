@@ -4,6 +4,7 @@ class TableFormatter {
   constructor(rowGenerator = new RowGenerator()) {
     this.rowGenerator = rowGenerator;
   }
+
   renderTable(rows) {
     return rows
       .map(row => {

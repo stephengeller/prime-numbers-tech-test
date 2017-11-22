@@ -9,9 +9,6 @@ class UserInterface {
     this.primeChecker = primeChecker;
     this.tableFormatter = tableFormatter;
   }
-  askNumber() {
-    return 'Please input the number of primes you would like to see: ';
-  }
 
   getPrimeTable(number) {
     const primes = this.primeChecker.getPrimes(number);

@@ -2,7 +2,7 @@ const UserInterface = require('../src/userInterface');
 
 describe('UserInterface', () => {
   const primeChecker = {
-    getPrimes: jest.fn(arg => arg)
+    getPrimes: jest.fn(arg => [])
   };
   const tableFormatter = {
     formatTable: jest.fn()
@@ -10,14 +10,6 @@ describe('UserInterface', () => {
   let userInterface;
   beforeEach(() => {
     userInterface = new UserInterface(primeChecker, tableFormatter);
-  });
-
-  describe('#askForNumber', () => {
-    it('asks you for a number', () => {
-      expect(userInterface.askNumber()).toContain(
-        'Please input the number of primes you would like to see'
-      );
-    });
   });
 
   describe('#getPrimeTable', () => {
@@ -28,8 +20,8 @@ describe('UserInterface', () => {
       it('calls the primeChecker to get primes', () => {
         expect(primeChecker.getPrimes).toHaveBeenCalledWith(3);
       });
-      it('calls the tableFormatter', () => {
-        expect(tableFormatter.formatTable).toHaveBeenCalledWith(3);
+      it('calls the tableFormatter to format the table', () => {
+        expect(tableFormatter.formatTable).toHaveBeenCalledWith([]);
       });
     });
   });

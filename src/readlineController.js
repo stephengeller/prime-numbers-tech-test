@@ -7,39 +7,45 @@ class ReadLineController {
     rl = readline.createInterface({
       input: process.stdin,
       output: process.stdout
-    })
+    }),
+    logger = console.log
   ) {
     this.rl = rl;
     this.userInterface = userInterface;
+    this.logger = logger;
   }
+
   responseIsValid(answer) {
     return !isNaN(parseInt(answer)) && answer > 0;
   }
 
-  promptBadAnser(answer) {
-    console.log(`\n${answer} is not valid,`);
-    console.log('please use a positive number more than 0!');
-    console.log('You can type "exit" to quit');
+  promptBadAnswer(answer) {
+    this.logger(`\n${answer} is not valid,`);
+    this.logger('please use a positive number more than 0!');
+    this.logger('You can type "exit" to quit');
   }
 
   printPrimeTable(answer) {
     const table = this.userInterface.getPrimeTable(answer);
-    console.log(table);
+    this.logger(table);
   }
 
   beginLoop() {
     const inputLoop = () => {
-      this.rl.question(this.userInterface.askNumber(), answer => {
-        if (this.responseIsValid(answer)) {
-          this.printPrimeTable(answer);
-          inputLoop();
-        } else if (answer.includes('exit')) {
-          this.rl.close();
-        } else {
-          this.promptBadAnser(answer);
-          inputLoop();
+      this.rl.question(
+        'Please input the number of primes you would like to see: ',
+        answer => {
+          if (this.responseIsValid(answer)) {
+            this.printPrimeTable(answer);
+            inputLoop();
+          } else if (answer.includes('exit')) {
+            this.rl.close();
+          } else {
+            this.promptBadAnswer(answer);
+            inputLoop();
+          }
         }
-      });
+      );
     };
     inputLoop();
   }

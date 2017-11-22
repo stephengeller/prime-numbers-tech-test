@@ -1,5 +1,6 @@
 class PrimeChecker {
   checkIfPrime(n) {
+    if (n < 2) return false;
     const limit = Math.sqrt(n);
     for (var i = 2; i <= limit; i++) {
       if (n % i === 0) return false;
@@ -19,8 +20,5 @@ class PrimeChecker {
     return primesArr;
   }
 }
-
-let pG = new PrimeChecker();
-pG.getPrimes(20000);
 
 module.exports = PrimeChecker;
