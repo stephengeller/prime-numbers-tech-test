@@ -12,8 +12,7 @@ class UserInterface {
 
   getPrimeTable(number) {
     const primes = this.primeChecker.getPrimes(number);
-    const table = this.tableFormatter.formatTable(primes);
-    return table;
+    return this.tableFormatter.formatTable(primes);
   }
 }
 
